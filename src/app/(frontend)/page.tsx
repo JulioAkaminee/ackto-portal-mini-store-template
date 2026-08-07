@@ -6,6 +6,18 @@ import React from 'react'
 
 import { formatPrice } from '@/lib/format'
 
+/**
+ * Rendered per request, not at build time.
+ *
+ * Two reasons, and either one is enough. A prerendered storefront freezes the
+ * catalogue into the build: publish a product in the admin and nobody sees it
+ * until the next deploy. And prerendering makes `next build` open a database
+ * connection, so the build fails outright wherever DATABASE_URL is not
+ * reachable — CI, a fresh clone, any environment that builds before it has a
+ * database.
+ */
+export const dynamic = 'force-dynamic'
+
 export default async function HomePage() {
   const payload = await getPayload({ config: await config })
 
