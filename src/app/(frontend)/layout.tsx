@@ -10,8 +10,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
-    <html lang="en">
-      <body className="bg-white text-gray-900 antialiased">
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-background font-sans text-foreground antialiased">
         <main className="mx-auto max-w-5xl px-6 py-12">{children}</main>
       </body>
     </html>

@@ -33,9 +33,12 @@ export default async function HomePage() {
     <div>
       <header className="mb-10">
         <h1 className="text-3xl font-semibold tracking-tight">Portal Mini Store</h1>
-        <p className="mt-2 text-gray-600">
+        <p className="mt-2 text-muted-foreground">
           Products come from Payload. Add them in{' '}
-          <Link className="underline underline-offset-4" href="/admin">
+          <Link
+            className="text-primary underline underline-offset-4"
+            href="/admin"
+          >
             the admin
           </Link>{' '}
           and publish one to see it here.
@@ -43,7 +46,7 @@ export default async function HomePage() {
       </header>
 
       {products.length === 0 ? (
-        <p className="rounded-lg border border-dashed border-gray-300 p-10 text-center text-gray-500">
+        <p className="rounded-ackto border border-dashed border-border p-10 text-center text-muted-foreground">
           No published products yet.
         </p>
       ) : (
@@ -54,7 +57,7 @@ export default async function HomePage() {
             return (
               <li
                 key={product.id}
-                className="overflow-hidden rounded-lg border border-gray-200"
+                className="overflow-hidden rounded-ackto border border-border bg-card transition-colors duration-200 ease-ackto-out hover:border-primary motion-reduce:transition-none"
               >
                 <Link href={`/products/${product.slug}`}>
                   {image?.url ? (
@@ -66,11 +69,11 @@ export default async function HomePage() {
                       width={image.width ?? 512}
                     />
                   ) : (
-                    <div className="h-48 w-full bg-gray-100" />
+                    <div className="h-48 w-full bg-muted" />
                   )}
                   <div className="p-4">
-                    <h2 className="font-medium">{product.title}</h2>
-                    <p className="mt-1 text-sm text-gray-600">
+                    <h2 className="font-medium text-card-foreground">{product.title}</h2>
+                    <p className="mt-1 text-sm text-muted-foreground">
                       {formatPrice(product.priceInCents)}
                     </p>
                   </div>

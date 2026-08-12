@@ -33,7 +33,10 @@ export default async function ProductPage({
 
   return (
     <article>
-      <Link className="text-sm text-gray-600 underline underline-offset-4" href="/">
+      <Link
+        className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+        href="/"
+      >
         ← Back
       </Link>
 
@@ -41,13 +44,13 @@ export default async function ProductPage({
         {image?.url ? (
           <Image
             alt={image.alt ?? product.title}
-            className="w-full rounded-lg object-cover"
+            className="w-full rounded-ackto object-cover"
             height={image.height ?? 640}
             src={image.url}
             width={image.width ?? 640}
           />
         ) : (
-          <div className="aspect-square w-full rounded-lg bg-gray-100" />
+          <div className="aspect-square w-full rounded-ackto bg-muted" />
         )}
 
         <div>
@@ -55,10 +58,10 @@ export default async function ProductPage({
           <p className="mt-2 text-xl">{formatPrice(product.priceInCents)}</p>
 
           {product.description ? (
-            <p className="mt-6 whitespace-pre-line text-gray-700">{product.description}</p>
+            <p className="mt-6 whitespace-pre-line text-muted-foreground">{product.description}</p>
           ) : null}
 
-          <p className="mt-6 text-sm text-gray-500">
+          <p className="mt-6 text-sm text-muted-foreground">
             {product.stock && product.stock > 0
               ? `${product.stock} in stock`
               : 'Out of stock'}

@@ -1,1 +1,113 @@
 @import 'tailwindcss';
+
+/*
+ * ============================================================================
+ * Ackto design system — Tailwind v4
+ *
+ * Brand palette (from the Ackto product tokens):
+ *   Sapphire Sky   #266DD3  primary accent — CTAs, links, selection, focus
+ *   Charcoal Blue  #344055  structure and body text
+ *   Lavender Grey  #888098  secondary text
+ *   Thistle        #CFB3CD  soft accent — never a second primary button colour
+ *
+ * This template is on Tailwind v4, so the shape differs from the other Ackto
+ * templates: `@theme inline` maps the utility names onto plain custom
+ * properties, and only those properties are re-declared per theme. Declaring
+ * the colours directly in `@theme` would freeze them at their light values —
+ * theme variables are resolved once, not per scope.
+ *
+ * Light surfaces are thistle-tinted paper, not generic grey.
+ * ============================================================================
+ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --color-brand-sapphire: #266dd3;
+  --color-brand-charcoal: #344055;
+  --color-brand-lavender: #888098;
+  --color-brand-thistle: #cfb3cd;
+
+  --radius-ackto: 0.875rem;
+
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI Variable Text', 'Segoe UI',
+    Inter, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:
+    ui-monospace, 'SF Mono', 'JetBrains Mono', 'Cascadia Mono', Menlo, Consolas,
+    monospace;
+
+  --ease-ackto-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  color-scheme: light;
+
+  --background: #f7f4fa;
+  --foreground: #344055;
+  --card: #ffffff;
+  --card-foreground: #344055;
+  --muted: #efe8f4;
+  --muted-foreground: #5a6578;
+  --primary: #266dd3;
+  --primary-foreground: #ffffff;
+  --border: #ddd3e6;
+  --ring: #266dd3;
+}
+
+/*
+ * Dark is Ackto's primary theme, so the system decides when nobody asked. An
+ * explicit `.dark` / `.light` class on <html> still wins.
+ */
+.dark {
+  color-scheme: dark;
+
+  --background: #12161f;
+  --foreground: #f3eef6;
+  --card: #1a202c;
+  --card-foreground: #f3eef6;
+  --muted: #212937;
+  --muted-foreground: #b8b2c2;
+  --primary: #266dd3;
+  --primary-foreground: #ffffff;
+  --border: #292934;
+  --ring: #4a88e3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    color-scheme: dark;
+
+    --background: #12161f;
+    --foreground: #f3eef6;
+    --card: #1a202c;
+    --card-foreground: #f3eef6;
+    --muted: #212937;
+    --muted-foreground: #b8b2c2;
+    --primary: #266dd3;
+    --primary-foreground: #ffffff;
+    --border: #292934;
+    --ring: #4a88e3;
+  }
+}
+
+::selection {
+  background-color: color-mix(in srgb, #266dd3 24%, transparent);
+}
+
+/* Sapphire clears 3:1 against paper (4.58) and against ink (5.10). */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
